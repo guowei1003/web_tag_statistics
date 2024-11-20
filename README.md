@@ -1,4 +1,9 @@
 # <img src="public/icons/icon_48.png" width="45" align="left"> Simple Page Statistics
+<p align="center">
+  <a href="https://github.com/guowei1003/web_tag_statistics/blob/main/LICENSE">
+    <img height="28px" alt="License" src="http://img.shields.io/badge/license-mit-blue.svg?style=for-the-badge" style="max-width:100%;">
+  </a>
+</p>
 
 Extension to display simple page statistics on the Chrome/Edge/Brave web browser.
 
@@ -24,4 +29,4 @@ Then, load the `dist` folder as an unpacked extension in Chrome/Edge/Brave.
 
 ## License
 
-[MIT]([https://github.com/chinese-poetry/chinese-poetry/blob/master/LICENSE](https://github.com/guowei1003/web_tag_statistics/blob/main/LICENSE)) License
+[MIT](https://github.com/guowei1003/web_tag_statistics/blob/main/LICENSE) License

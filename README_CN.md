@@ -1,5 +1,9 @@
 # <img src="public/icons/icon_48.png" width="45" align="left"> Simple Page Statistics
-
+<p align="center">
+  <a href="https://github.com/guowei1003/web_tag_statistics/blob/main/LICENSE">
+    <img height="28px" alt="License" src="http://img.shields.io/badge/license-mit-blue.svg?style=for-the-badge" style="max-width:100%;">
+  </a>
+</p>
 扩展程序，用于在Chrome/Edge/BBrave网络浏览器上显示简单的页面统计信息。
 
 ## 功能
@@ -23,5 +27,5 @@ npm run build
 
 ## License
 
-[MIT]([https://github.com/chinese-poetry/chinese-poetry/blob/master/LICENSE](https://github.com/guowei1003/web_tag_statistics/blob/main/LICENSE)) 许可证。
+[MIT](https://github.com/guowei1003/web_tag_statistics/blob/main/LICENSE) 许可证。
 
