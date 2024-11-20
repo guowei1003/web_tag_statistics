@@ -10,10 +10,8 @@
 - ...
 
 ## 截图
-
 ![截图](./pic1.png)
 ![截图](./pic2.png)
-
 ## 使用方法
 
 ```
@@ -25,5 +23,5 @@ npm run build
 
 ## License
 
-MIT
+[MIT]([https://github.com/chinese-poetry/chinese-poetry/blob/master/LICENSE](https://github.com/guowei1003/web_tag_statistics/blob/main/LICENSE)) 许可证。
 
