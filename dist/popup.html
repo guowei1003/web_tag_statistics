@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Page Tag Statistics</title>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/echarts.min.js"></script>
+    <!-- <link rel="stylesheet" href="static/css/tailwind.min.css"> -->
+    <link rel="stylesheet" href="static/css/pure.min.css" />
+    <link rel="stylesheet" href="static/css/common.css" />
+    <link rel="stylesheet" href="static/css/popup.css" />
+  </head>
+  <body>
+    <div id="index" class="app">
+      <div class="style-title flex items-center justify-between">
+        <div class="flex items-center">
+          <img src="icons/icon_32.png" alt="tag" width="20" height="20" />
+          <h4 class="ml-1">Tag Statistics</h4>
+        </div>
+        <div class="text-right flex items-center">
+          <span class="text-gray-500 text-xs mr-2" id="refreshTime"></span>
+          <img
+            id="refresh"
+            title="Refresh"
+            class="style-pointer style-refresh"
+            src="static/images/refresh.png"
+            alt="refresh"
+            width="20"
+            height="20"
+          />
+        </div>
+      </div>
+
+      <div
+        class="style-title-url flex flex-col items-start my-3 p-1 mx-1 shadow-lg"
+      >
+        <div class="flex items-center mb-1 w-full">
+          <img
+            id="icon-page"
+            src="icons/icon_32.png"
+            alt="icon"
+            width="15"
+            height="15"
+          />
+          <span id="page-title" class="style-content ml-1 truncate"></span>
+        </div>
+        <div class="flex items-center w-full">
+          <span id="page-url" class="truncate text-gray-500 text-xs"
+            >https://blog.csdn.net/weixin_44786530/article/details/128371323
+          </span>
+          <a id="go-history" href="#" class="mx-1 text-xs flex-shrink-0"
+            >历史</a
+          >
+        </div>
+      </div>
+      <div class="flex flex-col items-start my-1 p-1 mx-1 shadow-lg">
+        <div class="flex items-center">
+          <span class="text-xs text-gray-500">Load Time:</span>
+          <span id="load-time" class="style-content ml-2"></span>
+        </div>
+      </div>
+      <div class="flex items-center justify-around my-3">
+        <div class="style-total-card shadow-lg flex flex-col items-center">
+          <span class="text-xs text-gray-500">Tag Total:</span>
+          <span id="tagCount" class="style-content">Loading...</span>
+        </div>
+        <div class="style-total-card shadow-lg flex flex-col items-center">
+          <span class="text-xs text-gray-500">Max Count:</span>
+          <span id="tagMax" class="style-content">Loading...</span>
+        </div>
+      </div>
+      <div>
+        <table class="pure-table text-xs w-full">
+          <thead>
+            <tr>
+              <th>iframe</th>
+              <th>meta</th>
+              <th>js</th>
+              <th>css</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span id="tagIframeCount" class="style-content">Loading</span>
+              </td>
+              <td>
+                <span id="tagMetaCount" class="style-content">Loading</span>
+              </td>
+              <td>
+                <span id="refJsCount" class="style-content">Loading</span>
+              </td>
+              <td>
+                <span id="refCssCount" class="style-content">Loading</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pure-g style-list-containor mt-2">
+        <div class="pure-u-3-5 h-full flex flex-col">
+          <div>
+            <div class="flex items-center justify-start">
+              <img
+                src="static/images/tag.png"
+                alt="tag"
+                width="16"
+                height="16"
+              />
+              <span class="style-title-nomal text-sm text-gray-500 mx-2">
+                Tag Top 10
+              </span>
+            </div>
+            <hr
+              class="ml-2"
+              style="width: 80%; border: 0.5px solid rgba(0, 0, 0, 0.1)"
+            />
+          </div>
+          <div
+            id="tagList"
+            class="style-tag-list flex flex-col shadow-md m-2 flex-grow"
+          >
+            <div class="style-content-empty flex items-center justify-center">
+              <span class="text-xs text-gray-500">Loading...</span>
+            </div>
+            <!-- <div class="flex items-center justify-between style-list-item">
+              <div class="text-xs truncate">
+                1.BUTTOMssdfsfds
+              </div>
+              <div class="flex items-center text-xs font-bold">
+                2131
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="pure-u-2-5 flex flex-col h-full">
+          <div>
+            <div class="flex items-center justify-start">
+              <img
+                src="static/images/charts-pie.png"
+                alt="pie"
+                width="16"
+                height="16"
+              />
+              <span class="style-title-nomal text-sm text-gray-500 mx-2">
+                Tag Scatter
+              </span>
+            </div>
+            <hr
+              class="ml-2"
+              style="width: 80%; border: 0.5px solid rgba(0, 0, 0, 0.1)"
+            />
+          </div>
+          <div id="tagDist" class="flex flex-col shadow-md m-2 flex-grow">
+            <div class="style-content-empty flex items-center justify-center">
+              <span class="text-xs text-gray-500">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="flex items-center justify-between my-2">
+          <div class="flex items-center justify-start">
+            <img
+              class="style-pointer style-title-nomal"
+              src="static/images/ad.png"
+              alt="get ads"
+              width="20"
+              height="20"
+            />
+            <span class="style-title-nomal">Check Ad Elements</span>
+          </div>
+          <img
+            id="ad-refresh"
+            title="Refresh"
+            class="style-pointer style-refresh"
+            src="static/images/refresh.png"
+            alt="refresh"
+            width="20"
+            height="20"
+          />
+        </div>
+        <hr class="my-2" style="border: 0.5px solid rgba(0, 0, 0, 0.1)" />
+        <div>
+          <div id="ad-overview" class="style-content text-xs text-gray-500">Calculating</div>
+          <table id="ad-table" class="pure-table  pure-table-horizontal text-xs w-full" style="display: none;">
+            <thead>
+              <tr>
+                <th>Tag</th>
+                <th>Type</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody id="ad-list">
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div id="history" class="app" style="display: none;">
+      <div class="flex items-center justify-between mb-2">
+        <img
+          id="go-index"
+          title="back"
+          class="style-pointer"
+          src="static/images/arrow-left-bold.png"
+          alt="back"
+          width="20"
+          height="20"
+        />
+        <img
+          title="Only retain data from 10 days of history"
+          class="mr-2"
+          src="static/images/help.png"
+          alt="tips"
+          width="16"
+          height="16"
+        />
+      </div>
+      <hr style="border: 0.5px solid rgba(0, 0, 0, 0.1)" />
+      <div
+        id="history-chart"
+        class="my-3 p-1 mx-1 shadow-lg style-history-chart"
+      ></div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
